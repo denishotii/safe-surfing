@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base:        #F6F1EA;
+  --bg-surface:     #FFFFFF;
+  --bg-sunken:      #EDE6D9;
+  --text-primary:   #0B1F2E;
+  --text-secondary: #4A5568;
+  --text-muted:     #94A3B8;
+  --border-default: rgba(11, 31, 46, 0.08);
+  --border-strong:  rgba(11, 31, 46, 0.16);
+  --teal-600:  #0D9488;
+  --coral-500: #F97456;
+  --status-go:    #059669;
+  --status-go-bg: #ECFDF5;
+  --status-check:    #D97706;
+  --status-check-bg: #FFFBEB;
+  --status-avoid:    #DC2626;
+  --status-avoid-bg: #FEF2F2;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg-base);
+  color: var(--text-primary);
+}
+
+#root {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100svh;
+  position: relative;
+  background: var(--bg-base);
+  box-shadow: 0 0 80px rgba(0,0,0,0.12);
+}
+
+/* Tabular nums everywhere they matter */
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Scrollbar hide */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Leaflet */
+.leaflet-control-attribution { display: none !important; }
+.leaflet-container { background: #EDE6D9 !important; }
+
+/* Shimmer animation for skeletons */
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #EDE6D9 25%, #F6F1EA 50%, #EDE6D9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+/* Wave draw-on animation for splash */
+@keyframes wave-draw {
+  from { stroke-dashoffset: 200; }
+  to   { stroke-dashoffset: 0; }
+}
+.wave-draw {
+  stroke-dasharray: 200;
+  animation: wave-draw 0.7s ease-out forwards;
+}
+
+/* Safe area insets */
+.pb-safe { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+.pt-safe { padding-top: max(0px, env(safe-area-inset-top)); }
